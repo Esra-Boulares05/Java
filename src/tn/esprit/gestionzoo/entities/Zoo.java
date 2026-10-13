@@ -1,17 +1,31 @@
-public class Zoo {
-    Animal[] animals;
-    String name;
-    String city;
-    static final int nbrCages =25;
-    int animalCount = 0;
+package tn.esprit.gestionzoo.entities;
 
+public class Zoo {
+    private Animal[] animals;
+    private String name;
+    private String city;
+    private static final int nbrCages = 25;
+    private int animalCount = 0;
 
     public Zoo(String name, String city) {
         animals = new Animal[nbrCages];
-        this.name = name;
+        setName(name);
         this.city = city;
     }
 
+    public String getName() { return name; }
+    public void setName(String name) {
+        if (name != null && !name.isEmpty()) {
+            this.name = name;
+        } else {
+            System.out.println("Le nom du zoo ne doit pas etre vide.");
+        }
+    }
+
+    public String getCity() { return city; }
+    public void setCity(String city) { this.city = city; }
+
+    public int getAnimalCount() { return animalCount; }
 
     public void displayZoo() {
         System.out.println("Nom : " + name);
@@ -19,11 +33,11 @@ public class Zoo {
         System.out.println("Nombre de cages : " + nbrCages);
     }
 
+    @Override
     public String toString() {
-        return "Zoo{name='" + name + "', city='" + city
+        return "tn.esprit.gestionzoo.entities.Zoo{name='" + name + "', city='" + city
                 + "', nbrCages=" + nbrCages + "}";
     }
-
 
     public void displayAnimals() {
         for (int i = 0; i < animalCount; i++) {
@@ -31,16 +45,14 @@ public class Zoo {
         }
     }
 
-
     public int searchAnimal(Animal animal) {
         for (int i = 0; i < animalCount; i++) {
-            if (animals[i].name.equals(animal.name)) {
+            if (animals[i].getName().equals(animal.getName())) {
                 return i;
             }
         }
         return -1;
     }
-
 
     public boolean addAnimal(Animal animal) {
         if (isZooFull()) {
@@ -54,7 +66,6 @@ public class Zoo {
         return true;
     }
 
-
     public boolean removeAnimal(Animal animal) {
         int index = searchAnimal(animal);
         if (index == -1) {
@@ -67,14 +78,15 @@ public class Zoo {
         animalCount--;
         return true;
     }
+
     public boolean isZooFull() {
         return animalCount == nbrCages;
     }
-    public Zoo compareZoo(Zoo z1,Zoo z2) {
-        if (z1.animalCount>= z2.animalCount){
+
+    public Zoo compareZoo(Zoo z1, Zoo z2) {
+        if (z1.animalCount >= z2.animalCount) {
             return z1;
         }
-        return  z2;
+        return z2;
     }
-
 }

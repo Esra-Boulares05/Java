@@ -1,6 +1,8 @@
+package tn.esprit.gestionzoo.main;
+import tn.esprit.gestionzoo.entities.Animal;
+import tn.esprit.gestionzoo.entities.Zoo;
 public class ZooManagement {
     public static void main(String[] args) {
-
         Animal lion = new Animal("Felidae", "Simba", 5, true);
         Zoo myZoo = new Zoo("Belvedere", "Tunis");
         myZoo.displayZoo();
@@ -26,6 +28,9 @@ public class ZooManagement {
         Zoo z2 = new Zoo("Safari", "Hammamet");
         z2.addAnimal(new Animal("Ursidae", "Baloo", 6, true));
         Zoo plusGrand = myZoo.compareZoo(myZoo, z2);
-        System.out.println(plusGrand.name);
+        System.out.println(plusGrand.getName());
+
+        Animal bebe = new Animal("Felidae", "Test", -3, true);
+        Zoo vide = new Zoo("", "Tunis");
     }
 }
