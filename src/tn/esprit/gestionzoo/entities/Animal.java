@@ -13,13 +13,26 @@ public class Animal {
         this.isMammal = isMammal;
     }
 
-    public String getFamily() { return family; }
-    public void setFamily(String family) { this.family = family; }
+    public String getFamily() {
+        return family;
+    }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public void setFamily(String family) {
+        this.family = family;
+    }
 
-    public int getAge() { return age; }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
     public void setAge(int age) {
         if (age >= 0) {
             this.age = age;
@@ -28,12 +41,19 @@ public class Animal {
         }
     }
 
-    public boolean isMammal() { return isMammal; }
-    public void setMammal(boolean isMammal) { this.isMammal = isMammal; }
+    public boolean isMammal() {
+        return isMammal;
+    }
+
+    public void setMammal(boolean isMammal) {
+        this.isMammal = isMammal;
+    }
 
     @Override
     public String toString() {
-        return "tn.esprit.gestionzoo.entities.Animal{family='" + family + "', name='" + name
-                + "', age=" + age + ", isMammal=" + isMammal + "}";
+        return "Animal{family='" + family
+                + "', name='" + name
+                + "', age=" + age
+                + ", isMammal=" + isMammal + "}";
     }
 }

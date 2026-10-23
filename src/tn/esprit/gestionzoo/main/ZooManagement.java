@@ -1,51 +1,100 @@
 package tn.esprit.gestionzoo.main;
+
 import tn.esprit.gestionzoo.entities.Animal;
-import tn.esprit.gestionzoo.entities.Zoo;
 import tn.esprit.gestionzoo.entities.Aquatic;
 import tn.esprit.gestionzoo.entities.Terrestrial;
 import tn.esprit.gestionzoo.entities.Dolphin;
 import tn.esprit.gestionzoo.entities.Penguin;
-public class ZooManagement {
-    public static void main(String[] args) {
-        Animal lion = new Animal("Felidae", "Simba", 5, true);
-        Zoo myZoo = new Zoo("Belvedere", "Tunis");
-        myZoo.displayZoo();
-        System.out.println(myZoo);
-        System.out.println(myZoo.toString());
-        System.out.println(lion);
-        Animal lion2 = new Animal("Felidae", "Simba", 5, true);
-        Animal zebre = new Animal("Equidae", "Marty", 4, true);
-        Animal singe = new Animal("Cercopithecidae", "Coco", 3, true);
-        Animal ours = new Animal("Ursidae", "Baloo", 6, true);
-        System.out.println(myZoo.addAnimal(lion));
-        System.out.println(myZoo.addAnimal(lion2));
-        System.out.println(myZoo.addAnimal(zebre));
-        System.out.println(myZoo.addAnimal(singe));
-        System.out.println(myZoo.addAnimal(ours));
-        myZoo.displayAnimals();
-        System.out.println(myZoo.searchAnimal(zebre));
-        System.out.println(myZoo.searchAnimal(ours));
-        System.out.println(myZoo.removeAnimal(lion));
-        System.out.println(myZoo.removeAnimal(lion));
-        myZoo.displayAnimals();
-        System.out.println(myZoo.isZooFull());
-        Zoo z2 = new Zoo("Safari", "Hammamet");
-        z2.addAnimal(new Animal("Ursidae", "Baloo", 6, true));
-        Zoo plusGrand = myZoo.compareZoo(myZoo, z2);
-        System.out.println(plusGrand.getName());
+import tn.esprit.gestionzoo.entities.Zoo;
 
-        Animal bebe = new Animal("Felidae", "Test", -3, true);
-        Zoo vide = new Zoo("", "Tunis");
-        Aquatic aquatic = new Aquatic();
+public class ZooManagement {
+
+    public static void main(String[] args) {
+
+
+        Zoo myZoo = new Zoo("Belvedere", "Tunis");
+
+        myZoo.displayZoo();
+
+
         Terrestrial terrestrial = new Terrestrial();
         Dolphin dolphin = new Dolphin();
         Penguin penguin = new Penguin();
-        System.out.println(aquatic);
+
+
+        Aquatic dolphin1 = new Dolphin(
+                "Delphinidae", "Flipper", 5,
+                true, "Ocean", 30.5f
+        );
+
+        Aquatic dolphin2 = new Dolphin(
+                "Delphinidae", "Dolly", 7,
+                true, "Ocean", 25.0f
+        );
+
+        Aquatic penguin1 = new Penguin(
+                "Spheniscidae", "Pingu", 4,
+                false, "Antarctica", 200.0f
+        );
+
+        Aquatic penguin2 = new Penguin(
+                "Spheniscidae", "Pingu2", 3,
+                false, "Antarctica", 150.0f
+        );
+
+
         System.out.println(terrestrial);
         System.out.println(dolphin);
         System.out.println(penguin);
-        aquatic.swim();
-        dolphin.swim();
-        penguin.swim();
+
+        System.out.println(dolphin1);
+        System.out.println(dolphin2);
+        System.out.println(penguin1);
+        System.out.println(penguin2);
+
+
+        myZoo.addAquaticAnimal(dolphin1);
+        myZoo.addAquaticAnimal(dolphin2);
+        myZoo.addAquaticAnimal(penguin1);
+        myZoo.addAquaticAnimal(penguin2);
+
+
+        System.out.println("\n--- Nage des animaux aquatiques ---");
+        myZoo.displayAquaticAnimals();
+
+
+        System.out.println("\n--- Profondeur maximale ---");
+        System.out.println(
+                "Profondeur maximale des pingouins : "
+                        + myZoo.maxPenguinSwimmingDepth()
+        );
+
+
+        System.out.println("\n--- Nombre d'animaux aquatiques ---");
+        myZoo.displayNumberOfAquaticsByType();
+
+
+        System.out.println("\n--- Test de equals() ---");
+
+        Dolphin dolphinA = new Dolphin(
+                "Delphinidae", "Flipper", 5,
+                true, "Ocean", 30.5f
+        );
+
+        Dolphin dolphinB = new Dolphin(
+                "Delphinidae", "Flipper", 5,
+                true, "Ocean", 25.0f
+        );
+
+        Dolphin dolphinC = new Dolphin(
+                "Delphinidae", "Flipper", 6,
+                true, "Ocean", 30.5f
+        );
+
+        System.out.println("dolphinA equals dolphinB : "
+                + dolphinA.equals(dolphinB));
+
+        System.out.println("dolphinA equals dolphinC : "
+                + dolphinA.equals(dolphinC));
     }
 }
